@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
 import axios from 'axios';
+import UsersTable from './UsersTable';
 
 const api = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com/',
@@ -16,8 +17,6 @@ export default function App() {
       });
     }
   }, [users]);
-
-  console.log(users);
 
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -43,6 +42,8 @@ export default function App() {
           .map((item, index) => {
             return <li key={index}>{item.name}</li>;
           })}
+      <hr />
+      <UsersTable />
     </div>
   );
 }
